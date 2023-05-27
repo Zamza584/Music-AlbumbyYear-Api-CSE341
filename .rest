@@ -1,0 +1,16 @@
+###
+GET http://localhost:8000/users
+
+###
+GET http://localhost:8000/users/64690f08ca3d339fd1cace73
+
+### 
+POST http://localhost:8000/users 
+Content-Type: application/json
+
+{
+    "firstName": "Manuel",
+    "lastName": "Zamalloa",
+    "email": "m@gmail.com",
+    "password": "orange"
+}
