@@ -1,15 +1,30 @@
+//local
 ###
-GET http://localhost:8000/users
-
+GET http://localhost:8001/users
 ###
-GET http://localhost:8000/users/64690f08ca3d339fd1cace73
-
+GET http://localhost:8001/users/64690f08ca3d339fd1cace73
 ### 
-POST http://localhost:8000/users 
+POST http://localhost:8001/users 
 Content-Type: application/json
 
 {
     "firstName": "Manuel",
+    "lastName": "Zamalloa",
+    "email": "m@gmail.com",
+    "password": "orange"
+}
+
+//Render
+###
+GET https://cse-341-project-34h3.onrender.com/users
+###
+GET https://cse-341-project-34h3.onrender.com/64728568a43785cf1461c554
+### 
+POST https://cse-341-project-34h3.onrender.com/users
+Content-Type: application/json
+
+{
+    "firstName": "Tommy",
     "lastName": "Zamalloa",
     "email": "m@gmail.com",
     "password": "orange"
