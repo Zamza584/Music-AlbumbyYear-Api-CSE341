@@ -2,15 +2,18 @@ const express = require("express");
 const app = express();
 const connectMongoDb = require("./DB/connection");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 //swagger for api documentation
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./utils/swagger-output.json');
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./utils/swagger-output.json");
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const port = process.env.PORT || 8000;
+
+app.use(express.static(__dirname + '/public'));
 app.use(express.json({ extended: false }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors({ origin: "*", credentials: true }));
 
 app.use("/", require("./routes/index"));
@@ -20,6 +23,9 @@ app.use("/albums", require("./routes/albums"));
 connectMongoDb();
 app.listen(port, console.log("connected to server http://localhost:" + port));
 
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 //initial routes ...
 

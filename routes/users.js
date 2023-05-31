@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const UserSchema = require("../models/userSchema");
 const { userValidationRules, validate } = require("../utils/validator");
-
 //get all users
+
 router.get("/", async (req, res) => {
   // #swagger.tags = ['Users']
   // #swagger.summary = "Get all users"
@@ -25,6 +25,7 @@ router.post("/", userValidationRules(), validate, async (req, res) => {
           schema: { $ref: "#/definitions/users" }
     } */
   const users = UserSchema(req.body);
+  console.log(req.body);
   try {
     const data = await users.save();
     res.status(201).json(data);
