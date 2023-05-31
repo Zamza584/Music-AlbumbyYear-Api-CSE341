@@ -1,30 +1,40 @@
 //local
 ###
-GET http://localhost:8001/users
+GET http://localhost:8000/users
 ###
-GET http://localhost:8001/users/64690f08ca3d339fd1cace73
+GET http://localhost:8000/users/647285fb4926f79fde3954e5
 ### 
-POST http://localhost:8001/users 
+POST http://localhost:8000/users 
 Content-Type: application/json
 
 {
     "firstName": "Manuel",
     "lastName": "Zamalloa",
-    "email": "m@gmail.com",
-    "password": "orange"
+    "email": "fgfdsg@mail.com",
+    "password": "orge"
+}
+###
+PUT http://localhost:8000/users/647285fb4926f79fde3954e5
+Content-Type: application/json
+
+{
+    "firstName": "Manuel",
+    "lastName": "Zamalloa",
+    "email": "fgfdsgmail.com",
+    "password": "orge"
 }
 
 //Render
 ###
 GET https://cse-341-project-34h3.onrender.com/users
 ###
-GET https://cse-341-project-34h3.onrender.com/64728568a43785cf1461c554
+GET https://cse-341-project-34h3.onrender.com/users/64728ca573c4cb372867c460
 ### 
 POST https://cse-341-project-34h3.onrender.com/users
 Content-Type: application/json
 
 {
-    "firstName": "Tommy",
+    "firstName": "Larry",
     "lastName": "Zamalloa",
     "email": "m@gmail.com",
     "password": "orange"

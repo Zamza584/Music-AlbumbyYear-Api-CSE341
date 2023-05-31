@@ -9,7 +9,7 @@ const swaggerDocument = require('./utils/swagger-output.json');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || 8000;
 app.use(express.json({ extended: false }));
 app.use(cors({ origin: "*", credentials: true }));
 

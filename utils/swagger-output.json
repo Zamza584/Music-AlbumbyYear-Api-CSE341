@@ -1,15 +1,21 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "Music Albums",
+    "title": "My API CSE-341",
     "description": "Purpose of api is to sort albums by year and display them to user."
   },
-  "host": "localhost:8001",
-  "basePath": "/",
-  "schemes": [
-    "http"
+  "servers": [
+    {
+      "url": "https://cse-341-project-34h3.onrender.com/",
+      "description": "main server"
+    },
+    {
+      "url": "http://localhost:8000/",
+      "description": "the other server"
+    }
   ],
+  "basePath": "",
   "paths": {
     "/": {
       "get": {
@@ -27,6 +33,7 @@
         "tags": [
           "Users"
         ],
+        "summary": "Get all users",
         "description": "",
         "parameters": [],
         "responses": {
@@ -42,6 +49,7 @@
         "tags": [
           "Users"
         ],
+        "summary": "create a User",
         "description": "",
         "parameters": [],
         "responses": {
@@ -50,6 +58,25 @@
           },
           "201": {
             "description": "Created"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        },
+        "requestBody": {
+          "description": "Data needed to create a contact",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/users"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/users"
+              }
+            }
           }
         }
       }
@@ -59,13 +86,81 @@
         "tags": [
           "Users"
         ],
+        "summary": "search by id",
         "description": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            },
+            "description": "Insert user id here to get data"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update a User",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Id of the User"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "requestBody": {
+          "description": "Data needed to update a User",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateUsers"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/updateUsers"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "delete a User",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -87,7 +182,59 @@
       }
     }
   },
+  "components": {
+    "schemas": {
+      "users": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "example": "any"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "any"
+          },
+          "email": {
+            "type": "string",
+            "example": "any@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "anyany"
+          }
+        },
+        "xml": {
+          "name": "users"
+        }
+      },
+      "updateUsers": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "example": "any"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "any"
+          },
+          "email": {
+            "type": "string",
+            "example": "any@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "anyany"
+          }
+        },
+        "xml": {
+          "name": "updateUsers"
+        }
+      }
+    }
+  },
   "schema": [
-    "http"
+    "https"
   ]
 }
