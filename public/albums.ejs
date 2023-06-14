@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albums API</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./JS/albumsByYear.js" defer></script>
+</head>
+
+<body>
+    <h1>Albums</h1>
+    <div class="album-container">
+        <h2>Album list by year</h2>
+        <label for="year">Select a Year</label>
+        <%  
+        const currentYear = (new Date()).getFullYear();
+        const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
+        const years = range(currentYear, currentYear - 50, -1);
+         %>
+        <select name="year" id="year">
+            <% for(let year of years)  {%>
+            <option value="<%=year%>"><%=year%></option>
+            <% } %>
+        </select>
+
+        <a class="btn" id="back">back</a>
+        <a class="btn" id="next">next</a>
+
+
+
+        <% for (let album of albumList) { %>
+        <div class="album-container__card">
+            <h2><%=album.name%></h2>
+            <p><%=album.artist%></p>
+            <p><%=album.release_date%></p>
+            <img src=<%=album.image%> alt="<%=album.name%> album cover">
+        </div>
+        <% } %>
+    </div>
+</body>
+
+
+</html>

@@ -2,7 +2,7 @@
 ###
 GET http://localhost:8000/users
 ###
-GET http://localhost:8000/users/647285fb4926f79fde3954e5
+GET http://localhost:8000/users/6488d46c7d07f894eb9ee18e
 ### 
 POST http://localhost:8000/users 
 Content-Type: application/json
@@ -10,25 +10,35 @@ Content-Type: application/json
 {
     "firstName": "Manuel",
     "lastName": "Zamalloa",
-    "email": "fgfdsg@mail.com",
-    "password": "orge"
+    "email": "mz@gmail.com",
+    "password": "cooldogs"
 }
+###
+POST http://localhost:8000/users/login 
+Content-Type: application/json
+
+{
+    "email": "mz@gmail.com",
+    "password": "cooldogs"
+}
+
+
 ###
 PUT http://localhost:8000/users/647285fb4926f79fde3954e5
 Content-Type: application/json
 
 {
-    "firstName": "Manuel",
-    "lastName": "Zamalloa",
+    "firstName": "idaho",
+    "lastName": "idaho",
     "email": "fgfdsgmail.com",
-    "password": "orge"
+    "password": "orgddde"
 }
 
-//Render
+//Render Page Requests
 ###
 GET https://cse-341-project-34h3.onrender.com/users
 ###
-GET https://cse-341-project-34h3.onrender.com/users/64728ca573c4cb372867c460
+GET https://cse-341-project-34h3.onrender.com/users/6476623517cc9c19b2be2a9c
 ### 
 POST https://cse-341-project-34h3.onrender.com/users
 Content-Type: application/json
@@ -39,3 +49,15 @@ Content-Type: application/json
     "email": "m@gmail.com",
     "password": "orange"
 }
+###
+PUT https://cse-341-project-34h3.onrender.com/users/647ec390edcd39f8c18e7cc7
+Content-Type: application/json
+
+{ 
+    "firstName": "Lar",
+    "lastName": "Zamalloa",
+    "email": "mgmail.com",
+    "password": "oran"
+}
+###
+DELETE https://cse-341-project-34h3.onrender.com/users/6476623517cc9c19b2be2a9c

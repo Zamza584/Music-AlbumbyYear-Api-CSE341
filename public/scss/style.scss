@@ -1,3 +1,5 @@
+@use "./colors.scss" as *;
+
 @import url("https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap");
 
 * {
@@ -8,20 +10,44 @@
 }
 
 body {
+  background-color: color(white, base);
   h1 {
-    padding-top: 20px;
+    padding: 10px;
     text-align: center;
+    margin-bottom: 40px;
   }
+}
+
+.btn {
+  background-color: color(blue, base);
+  color: color(white, base);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.btn:hover {
+  background-color: color(blue, light);
+  color: color(blue, base);
+}
+
+input {
+  all: unset;
+  border: 1px solid color(blue, base);
+  border-radius: 10px;
 }
 
 .reg-container,
 .login-container {
-  border: black solid 1px;
+  background-color: color(white, base);
   max-width: 500px;
-  margin: auto;
-  margin-top: 150px;
   padding: 25px 40px;
+  margin: 0 2rem;
   border-radius: 20px;
+  box-shadow: 15px 15px color(blue, base);
 
   h2 {
     margin-bottom: 1em;
@@ -30,10 +56,59 @@ body {
     margin-bottom: 1em;
     display: block;
   }
+
   form {
+    input[type="text"] {
+      font-size: 1rem;
+    }
+    input[type="email"] {
+      font-size: 1rem;
+    }
+    input[type="password"] {
+      font-size: 0.7rem;
+    }
     input {
-      padding: 5px;
+      padding: 5px 10px;
+      height: 25px;
       width: 75%;
     }
+  }
+}
+
+//album file
+
+.album-container {
+  & > h2 { 
+    margin-bottom: 10px;
+  }
+  margin: 2rem;
+  #year {
+    margin-bottom: 20px;
+    border: none;
+    padding: 5px 15px;
+    background-color: color(blue, base);
+    color: color(white, base);
+    margin-left: 10px;
+  }
+}
+.album-container__card {
+  color: color(blue, base);
+  margin-bottom: 2rem;
+  background-color: color(white, base);
+  border-radius: 10px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  max-width: 400px;
+  border: 0.5px solid rgba($color: #a78787, $alpha: .2);
+  box-shadow: 10px 10px color(blue, light); 
+
+
+  img { 
+    margin-top: 10px;
+  }
+  @media (min-width: 760px) { 
+    
   }
 }

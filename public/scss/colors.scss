@@ -1,0 +1,31 @@
+$palettes: (
+  white: (
+    base: #ffffff
+  ),
+  blue: (
+    base: #22678c,
+    light: #bfdcfd
+  ),
+  yellow: (
+    base: #edff48ce,
+    light: #e5f3a5
+  )
+);
+
+
+@function color($color, $tone) {
+  @if map-has-key($palettes, $color) {
+    $color: map-get($palettes, $color);
+
+    @if map-has-key($color, $tone) {
+      $tone: map-get($color, $tone);
+      @return $tone;
+    }
+
+    @warn "unknown tone `#{$tone}` in color";
+    @return null;
+  }
+
+  @warn "unknown color `#{$color}` in palette";
+  @return null;
+}
