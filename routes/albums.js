@@ -10,7 +10,6 @@ router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
   let selectedYear = req.params.year;
   let p = req.params;
 
-  console.log(p);
   //to get token
   var clientId = process.env.CLIENT_ID; // Your client id
   var clientSecret = process.env.CLIENT_SECRET; // Your secret
@@ -39,14 +38,12 @@ router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
   if (req.params.next === "next") {
     offset += 10;
     url = `https://api.spotify.com/v1/search?q=year%3A${year}&type=album&offset=${offset}&limit=10`;
-    console.log(offset);
   } else if (req.params.previous === "previous") {
     offset -= 10;
     if (offset < 0) {
       offset = 0;
     }
     url = `https://api.spotify.com/v1/search?q=year%3A${year}&type=album&offset=${offset}&limit=10`;
-    console.log(offset);
   } else {
     url = `https://api.spotify.com/v1/search?q=year%3A${year}&type=album&offset=0&limit=10`;
     offset = 0;
@@ -78,7 +75,6 @@ router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
 //used in index
 
 router.get("/", cookieJWTAuth, async (req, res) => {
-  console.log(req.params);
 
   var clientId = process.env.CLIENT_ID; // Your client id
   var clientSecret = process.env.CLIENT_SECRET; // Your secret

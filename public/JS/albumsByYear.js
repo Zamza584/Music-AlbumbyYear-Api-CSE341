@@ -12,8 +12,6 @@ document.querySelector("#year").addEventListener("change", async (e) => {
     location.reload();
   }
 
-  console.log(albums[0].name);
-
   let albumCards = document.querySelectorAll(".album-container__card");
 
   let i = 0;
@@ -37,7 +35,6 @@ document.querySelector("#next").addEventListener("click", async (e) => {
   } catch {
     location.reload();
   }
-  console.log(albums[0].name);
 
   let albumCards = document.querySelectorAll(".album-container__card");
 
@@ -61,7 +58,6 @@ document.querySelector("#back").addEventListener("click", async (e) => {
   } catch {
     location.reload();
   }
-  console.log(albums[0].name);
 
   let albumCards = document.querySelectorAll(".album-container__card");
 
