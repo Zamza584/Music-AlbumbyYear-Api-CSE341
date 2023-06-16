@@ -1,3 +1,4 @@
+const { cookieJWTAuth } = require("../public/middlewares/cookieJWTAuth");
 const router = require("express").Router();
 
 /* get album names by title, id, release data and artist 
@@ -5,7 +6,7 @@ const router = require("express").Router();
 */
 let offset = 0;
 
-router.get("/:year/:next?/:previous?", async (req, res) => {
+router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
   let selectedYear = req.params.year;
   let p = req.params;
 
@@ -75,7 +76,8 @@ router.get("/:year/:next?/:previous?", async (req, res) => {
 });
 
 //used in index
-router.get("/", async (req, res) => {
+
+router.get("/", cookieJWTAuth, async (req, res) => {
   console.log(req.params);
 
   var clientId = process.env.CLIENT_ID; // Your client id
@@ -125,5 +127,17 @@ router.get("/", async (req, res) => {
   }
   res.render("albums", { albumList });
 });
+
+// function authenticateToken(req, res, next) {
+//   const authHeader = req.cookies.token;
+//   const token = authHeader && authHeader.split(" ")[1];
+//   if (token == null) return res.sendStatus(401);
+
+//   jwt.verify(token, proces.env.ACCESS_TOKEN_SECRET, (err, user) => {
+//     if (err) return res.sendStatus(403);
+//     req.user = user;
+//     next();
+//   });
+// }
 
 module.exports = router;

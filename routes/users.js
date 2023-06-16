@@ -2,15 +2,16 @@ const router = require("express").Router();
 const UserSchema = require("../models/userSchema");
 const { userValidationRules, validate } = require("../utils/validator");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 router.post("/", userValidationRules(), validate, async (req, res) => {
   /*#swagger.tags = ['Users']
-    #swagger.summary = "create a User"
-  	#swagger.requestBody = {
-          description: "Data needed to create a contact",
-          required: true,
-          schema: { $ref: "#/definitions/users" }
-    } */
+      #swagger.summary = "create a User"
+      #swagger.requestBody = {
+            description: "Data needed to create a contact",
+            required: true,
+            schema: { $ref: "#/definitions/users" }
+          } */
 
   try {
     const salt = await bcrypt.genSalt(10);
@@ -22,7 +23,7 @@ router.post("/", userValidationRules(), validate, async (req, res) => {
       email: req.body.email,
       password: hashedPassword
     });
-    
+
     const data = await users.save();
     res.status(201).json(data);
   } catch (err) {
@@ -33,18 +34,25 @@ router.post("/", userValidationRules(), validate, async (req, res) => {
 router.post("/login", async (req, res) => {
   const email = req.body.email;
   const user = await UserSchema.findOne({ email: new RegExp("^" + email + "$", "i") });
-
   if (user == null) {
     res.status(400).send("no user found");
   }
 
+  const newUser = { email: user.email };
+  const accessToken = jwt.sign(newUser, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1h" });
+
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
-      res.send("success logging in");
+      res.cookie("token", accessToken, {
+        httpOnly: true
+      });
+      res.redirect("/albums");
     } else {
       res.send("not allowed");
     }
-  } catch {}
+  } catch (err) {
+    res.send({ message: err });
+  }
 });
 
 router.get("/", async (req, res) => {

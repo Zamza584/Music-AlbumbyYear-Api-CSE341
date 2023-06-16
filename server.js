@@ -4,6 +4,7 @@ const connectMongoDb = require("./DB/connection");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
+const cookieParser = require("cookie-parser");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "public"));
@@ -15,6 +16,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const port = process.env.PORT || 8000;
 
+app.use(cookieParser());
 app.use(express.static(__dirname + "/public"));
 app.use(express.json({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: true }));
