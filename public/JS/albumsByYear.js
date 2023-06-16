@@ -2,7 +2,10 @@ let year;
 
 document.querySelector("#year").addEventListener("change", async (e) => {
   year = e.target.value;
-  let url = `http://localhost:8000/albums/${year}`;
+  let url =
+    `http://localhost:8000/albums/${year}` ||
+    "https://album-by-year-api.onrender.com/" + `albums/${year}`;
+  console.log(url);
 
   let albums;
   try {
@@ -26,7 +29,9 @@ document.querySelector("#year").addEventListener("change", async (e) => {
 
 document.querySelector("#next").addEventListener("click", async (e) => {
   let year = document.querySelector("#year").value;
-  let url = `http://localhost:8000/albums/${year}/next`;
+  let url =
+    `http://localhost:8000/albums/${year}/next` ||
+    "https://album-by-year-api.onrender.com/" + `albums/${year}/next`;
 
   let albums;
   try {
@@ -49,7 +54,9 @@ document.querySelector("#next").addEventListener("click", async (e) => {
 });
 document.querySelector("#back").addEventListener("click", async (e) => {
   let year = document.querySelector("#year").value;
-  let url = `http://localhost:8000/albums/${year}/null/previous`;
+  let url =
+    `http://localhost:8000/albums/${year}/null/previous` ||
+    "https://album-by-year-api.onrender.com/" + `albums/${year}/null/previous`;
 
   let albums;
   try {
