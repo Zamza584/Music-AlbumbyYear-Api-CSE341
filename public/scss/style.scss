@@ -13,9 +13,15 @@ body {
   background-color: color(white, base);
   h1 {
     padding: 10px;
-    text-align: center;
+    width: fit-content;
+    margin: auto;
     margin-bottom: 40px;
+    border-bottom: #a78787 solid 7px;
+    color: color(white, base);
   }
+  background-image: url("../images/background.jpg");
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .btn {
@@ -77,18 +83,37 @@ input {
 
 //album file
 
-.album-container {
-  & > h2 { 
-    margin-bottom: 10px;
+.album-options {
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 30px;
+
+  label {
+    color: white;
   }
-  margin: 2rem;
-  #year {
+  h2 {
     margin-bottom: 20px;
-    border: none;
-    padding: 5px 15px;
-    background-color: color(blue, base);
-    color: color(white, base);
-    margin-left: 10px;
+    color: white;
+  }
+}
+
+#year {
+  margin-bottom: 20px;
+  border: none;
+  padding: 5px 15px;
+  background-color: color(blue, base);
+  color: color(white, base);
+  margin-left: 10px;
+}
+.album-container {
+  margin: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  & > h2 {
+    margin-bottom: 10px;
+    color: white;
   }
 }
 .album-container__card {
@@ -99,16 +124,20 @@ input {
   padding: 30px;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
   max-width: 400px;
-  border: 0.5px solid rgba($color: #a78787, $alpha: .2);
-  box-shadow: 10px 10px color(blue, light); 
-
-
-  img { 
-    margin-top: 10px;
+  border: 0.5px solid rgba($color: #a78787, $alpha: 0.2);
+  box-shadow: 10px 10px color(blue, light);
+  h2 {
+    font-size: 1rem;
   }
-  @media (min-width: 760px) { 
-    
+  img {
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  @media (min-width: 760px) {
+    max-width: 300px;
+    height: 500px;
   }
 }

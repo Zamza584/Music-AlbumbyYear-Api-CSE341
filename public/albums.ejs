@@ -12,7 +12,7 @@
 
 <body>
     <h1>Albums</h1>
-    <div class="album-container">
+    <div class="album-options">
         <h2>Album list by year</h2>
         <label for="year">Select a Year</label>
         <%  
@@ -28,17 +28,24 @@
 
         <a class="btn" id="back">back</a>
         <a class="btn" id="next">next</a>
-
-
-
+    </div>
+    <div class="album-container">
         <% for (let album of albumList) { %>
         <div class="album-container__card">
-            <h2><%=album.name%></h2>
-            <p><%=album.artist%></p>
-            <p><%=album.release_date%></p>
-            <img src=<%=album.image%> alt="<%=album.name%> album cover">
+
+            <h2 name="albumName" value="<%=album.name%>"><%=album.name%></h2>
+            <p name="albumArtist" value="<%=album.artist%>"> <%=album.artist%></p>
+            <p name="albumRelease" value="<%=album.release_date%>"><%=album.release_date%></p>
+            <a name="albumLink" value="<%=album.spotify_link%>" href="<%=album.spotify_link%>" target="_blank">Listen now on Spotify</a>
+            <p name="albumTTracks" value=<%=album.total_tracks%>>Total tracks: <%=album.total_tracks%></p>
+            <button class="btn favorites">Add to favorites</button>
+            <img name="albumImage" src="<%=album.image%>" value="<%=album.image%>" alt="<%=album.name%> album cover">
         </div>
         <% } %>
+    </div>
+    <div class="album-options">
+        <a class="btn" id="back">back</a>
+        <a class="btn" id="next">next</a>
     </div>
 </body>
 

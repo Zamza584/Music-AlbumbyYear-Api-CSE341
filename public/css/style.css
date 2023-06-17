@@ -8,11 +8,17 @@
 
 body {
   background-color: #ffffff;
+  background-image: url("../images/background.jpg");
+  background-attachment: fixed;
+  background-size: cover;
 }
 body h1 {
   padding: 10px;
-  text-align: center;
+  width: fit-content;
+  margin: auto;
   margin-bottom: 40px;
+  border-bottom: #a78787 solid 7px;
+  color: #ffffff;
 }
 
 .btn {
@@ -74,19 +80,38 @@ input {
   width: 75%;
 }
 
-.album-container {
-  margin: 2rem;
+.album-options {
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 30px;
 }
-.album-container > h2 {
-  margin-bottom: 10px;
+.album-options label {
+  color: white;
 }
-.album-container #year {
+.album-options h2 {
+  margin-bottom: 20px;
+  color: white;
+}
+
+#year {
   margin-bottom: 20px;
   border: none;
   padding: 5px 15px;
   background-color: #22678c;
   color: #ffffff;
   margin-left: 10px;
+}
+
+.album-container {
+  margin: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.album-container > h2 {
+  margin-bottom: 10px;
+  color: white;
 }
 
 .album-container__card {
@@ -97,13 +122,24 @@ input {
   padding: 30px;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
   max-width: 400px;
   border: 0.5px solid rgba(167, 135, 135, 0.2);
   box-shadow: 10px 10px #bfdcfd;
 }
+.album-container__card h2 {
+  font-size: 1rem;
+}
 .album-container__card img {
   margin-top: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+@media (min-width: 760px) {
+  .album-container__card {
+    max-width: 300px;
+    height: 500px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

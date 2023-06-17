@@ -5,6 +5,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 router.post("/", userValidationRules(), validate, async (req, res) => {
+  //used to create a new user
+
   /*#swagger.tags = ['Users']
       #swagger.summary = "create a User"
       #swagger.requestBody = {
@@ -25,7 +27,9 @@ router.post("/", userValidationRules(), validate, async (req, res) => {
     });
 
     const data = await users.save();
-    res.status(201).json(data);
+    res.render("index", { message: "Congrats your account has been created" });
+    // res.redirect("/");
+    // res.status(201).json(data);
   } catch (err) {
     res.status(500).json({ message: err });
   }
@@ -38,7 +42,7 @@ router.post("/login", async (req, res) => {
     res.status(400).send("no user found");
   }
 
-  const newUser = { email: user.email };
+  const newUser = { id: user.id, email: user.email };
   const accessToken = jwt.sign(newUser, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1h" });
 
   try {
@@ -46,6 +50,8 @@ router.post("/login", async (req, res) => {
       res.cookie("token", accessToken, {
         httpOnly: true
       });
+
+      
       res.redirect("/albums");
     } else {
       res.send("not allowed");

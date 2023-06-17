@@ -1,10 +1,30 @@
+const { body } = require("express-validator");
 const { cookieJWTAuth } = require("../public/middlewares/cookieJWTAuth");
 const router = require("express").Router();
-
+const jwt = require("jsonwebtoken");
+const albumSchema = require("../models/albumSchema");
 /* get album names by title, id, release data and artist 
    I am using deezer api to do so
 */
 let offset = 0;
+
+router.post("/saveAlbum", cookieJWTAuth, async (req, res) => {
+  const token = req.cookies.token;
+  console.log(token)
+  const user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+  res.send(user.id); 
+
+  let albumData = {
+    ...req.body,
+    "user_id": user.id,
+  }
+
+  let data = albumSchema(albumData)
+  let resp = await data.save()
+  console.log(resp);
+
+});
+
 
 router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
   let selectedYear = req.params.year;
@@ -30,9 +50,7 @@ router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
 
   const data = await dataToken.json();
   var token = data.access_token;
-
   let year = selectedYear;
-
   let url;
 
   if (req.params.next === "next") {
@@ -56,6 +74,7 @@ router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
       Authorization: "Bearer " + token
     }
   });
+  
   let albums = await albumsData.json();
   let albumList = [];
 
@@ -66,7 +85,9 @@ router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
       type: obj.album_type,
       artist: obj.artists[0].name,
       release_date: obj.release_date,
-      image: obj.images[0].url
+      image: obj.images[0].url,
+      spotify_link: obj.external_urls.spotify,
+      total_tracks: obj.total_tracks
     });
   }
   res.send(albumList);
@@ -75,7 +96,6 @@ router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
 //used in index
 
 router.get("/", cookieJWTAuth, async (req, res) => {
-
   var clientId = process.env.CLIENT_ID; // Your client id
   var clientSecret = process.env.CLIENT_SECRET; // Your secret
   const tokenEndpoint = "https://accounts.spotify.com/api/token";
@@ -118,11 +138,14 @@ router.get("/", cookieJWTAuth, async (req, res) => {
       type: obj.album_type,
       artist: obj.artists[0].name,
       release_date: obj.release_date,
-      image: obj.images[0].url
+      image: obj.images[0].url,
+      spotify_link: obj.external_urls.spotify,
+      total_tracks: obj.total_tracks
     });
   }
   res.render("albums", { albumList });
 });
+
 
 // function authenticateToken(req, res, next) {
 //   const authHeader = req.cookies.token;
