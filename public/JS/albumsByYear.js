@@ -30,7 +30,7 @@ document.querySelector("#year").addEventListener("change", async (e) => {
   }
 });
 
-document.querySelector("#next").addEventListener("click", async (e) => {
+document.querySelector(".next").addEventListener("click", async (e) => {
   let year = document.querySelector("#year").value;
   let url = "https://album-by-year-api.onrender.com/" + `albums/${year}/next`;
 
@@ -56,7 +56,7 @@ document.querySelector("#next").addEventListener("click", async (e) => {
     i++;
   }
 });
-document.querySelector("#back").addEventListener("click", async (e) => {
+document.querySelector(".back").addEventListener("click", async (e) => {
   let year = document.querySelector("#year").value;
   let url = "https://album-by-year-api.onrender.com/" + `albums/${year}/null/previous`;
 
