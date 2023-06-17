@@ -19,13 +19,13 @@ document.querySelector("#year").addEventListener("change", async (e) => {
 
   let i = 0;
   for (let card of albumCards) {
-    card.innerHTML = `<h2 name="albumName" value="${album[i].name}">${album[i].name}</h2>
-    <p name="albumArtist" value="${album[i].artist}"> ${album[i].artist}</p>
-    <p name="albumRelease" value="${album[i].release_date}">${album[i].release_date}</p>
-    <a name="albumLink" value="${album[i].spotify_link}" href="${album[i].spotify_link}" target="_blank">Listen now on Spotify</a>
-    <p name="albumTTracks" value=${album[i].total_tracks}>Total tracks: ${album[i].total_tracks}</p>
+    card.innerHTML = `<h2 name="albumName" value="${albums[i].name}">${albums[i].name}</h2>
+    <p name="albumArtist" value="${albums[i].artist}"> ${albums[i].artist}</p>
+    <p name="albumRelease" value="${albums[i].release_date}">${albums[i].release_date}</p>
+    <a name="albumLink" value="${albums[i].spotify_link}" href="${albums[i].spotify_link}" target="_blank">Listen now on Spotify</a>
+    <p name="albumTTracks" value=${albums[i].total_tracks}>Total tracks: ${albums[i].total_tracks}</p>
     <button class="btn favorites">Add to favorites</button>
-    <img name="albumImage" src="${album[i].image}" value="${album[i].image}" alt="${album[i].name} album cover">`;
+    <img name="albumImage" src="${albums[i].image}" value="${albums[i].image}" alt="${albums[i].name} album cover">`;
     i++;
   }
 });
@@ -46,13 +46,13 @@ document.querySelector("#next").addEventListener("click", async (e) => {
 
   let i = 0;
   for (let card of albumCards) {
-    card.innerHTML = `<h2 name="albumName" value="${album[i].name}">${album[i].name}</h2>
-    <p name="albumArtist" value="${album[i].artist}"> ${album[i].artist}</p>
-    <p name="albumRelease" value="${album[i].release_date}">${album[i].release_date}</p>
-    <a name="albumLink" value="${album[i].spotify_link}" href="${album[i].spotify_link}" target="_blank">Listen now on Spotify</a>
-    <p name="albumTTracks" value=${album[i].total_tracks}>Total tracks: ${album[i].total_tracks}</p>
+    card.innerHTML = `<h2 name="albumName" value="${albums[i].name}">${albums[i].name}</h2>
+    <p name="albumArtist" value="${albums[i].artist}"> ${albums[i].artist}</p>
+    <p name="albumRelease" value="${albums[i].release_date}">${albums[i].release_date}</p>
+    <a name="albumLink" value="${albums[i].spotify_link}" href="${albums[i].spotify_link}" target="_blank">Listen now on Spotify</a>
+    <p name="albumTTracks" value=${albums[i].total_tracks}>Total tracks: ${albums[i].total_tracks}</p>
     <button class="btn favorites">Add to favorites</button>
-    <img name="albumImage" src="${album[i].image}" value="${album[i].image}" alt="${album[i].name} album cover">`;
+    <img name="albumImage" src="${albums[i].image}" value="${albums[i].image}" alt="${albums[i].name} album cover">`;
     i++;
   }
 });
@@ -72,13 +72,13 @@ document.querySelector("#back").addEventListener("click", async (e) => {
 
   let i = 0;
   for (let card of albumCards) {
-    card.innerHTML = `<h2 name="albumName" value="${album[i].name}">${album[i].name}</h2>
-    <p name="albumArtist" value="${album[i].artist}"> ${album[i].artist}</p>
-    <p name="albumRelease" value="${album[i].release_date}">${album[i].release_date}</p>
-    <a name="albumLink" value="${album[i].spotify_link}" href="${album[i].spotify_link}" target="_blank">Listen now on Spotify</a>
-    <p name="albumTTracks" value=${album[i].total_tracks}>Total tracks: ${album[i].total_tracks}</p>
+    card.innerHTML = `<h2 name="albumName" value="${albums[i].name}">${albums[i].name}</h2>
+    <p name="albumArtist" value="${albums[i].artist}"> ${albums[i].artist}</p>
+    <p name="albumRelease" value="${albums[i].release_date}">${albums[i].release_date}</p>
+    <a name="albumLink" value="${albums[i].spotify_link}" href="${albums[i].spotify_link}" target="_blank">Listen now on Spotify</a>
+    <p name="albumTTracks" value=${albums[i].total_tracks}>Total tracks: ${albums[i].total_tracks}</p>
     <button class="btn favorites">Add to favorites</button>
-    <img name="albumImage" src="${album[i].image}" value="${album[i].image}" alt="${album[i].name} album cover">`;
+    <img name="albumImage" src="${albums[i].image}" value="${albums[i].image}" alt="${albums[i].name} album cover">`;
     i++;
   }
 });
