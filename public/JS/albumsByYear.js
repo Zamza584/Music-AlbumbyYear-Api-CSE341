@@ -106,7 +106,7 @@ for (var i = 0; i < list.length; i++) {
       items[element.getAttribute("name")] = element.getAttribute("value");
     });
 
-    fetch("http://localhost:8000/albums/saveAlbum", {
+    fetch("https://album-by-year-api.onrender.com/albums/saveAlbum", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
