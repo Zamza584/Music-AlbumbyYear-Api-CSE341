@@ -87,6 +87,7 @@ input {
   width: fit-content;
   margin: auto;
   margin-bottom: 30px;
+  padding: 20px;
 
   label {
     color: white;
@@ -94,6 +95,10 @@ input {
   h2 {
     margin-bottom: 20px;
     color: white;
+  }
+  p { 
+    color: white;
+    margin-bottom: 20px;
   }
 }
 

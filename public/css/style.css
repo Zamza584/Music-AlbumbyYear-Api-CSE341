@@ -84,6 +84,7 @@ input {
   width: fit-content;
   margin: auto;
   margin-bottom: 30px;
+  padding: 20px;
 }
 .album-options label {
   color: white;
@@ -91,6 +92,10 @@ input {
 .album-options h2 {
   margin-bottom: 20px;
   color: white;
+}
+.album-options p {
+  color: white;
+  margin-bottom: 20px;
 }
 
 #year {
