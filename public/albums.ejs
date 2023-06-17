@@ -11,7 +11,9 @@
 </head>
 
 <body>
-    <h1>Albums</h1>
+    <nav class="nav_container">
+        <h1>Music Album Api</h1>
+    </nav>
     <div class="album-options">
         <h2>Album list by year</h2>
         <p>Time to enjoy and discover new albums to listen to! There is a lot out there.</p>
@@ -37,7 +39,8 @@
             <h2 name="albumName" value="<%=album.name%>"><%=album.name%></h2>
             <p name="albumArtist" value="<%=album.artist%>"> <%=album.artist%></p>
             <p name="albumRelease" value="<%=album.release_date%>"><%=album.release_date%></p>
-            <a name="albumLink" value="<%=album.spotify_link%>" href="<%=album.spotify_link%>" target="_blank">Listen now on Spotify</a>
+            <a name="albumLink" value="<%=album.spotify_link%>" href="<%=album.spotify_link%>" target="_blank">Listen
+                now on Spotify</a>
             <p name="albumTTracks" value=<%=album.total_tracks%>>Total tracks: <%=album.total_tracks%></p>
             <button class="btn favorites">Add to favorites</button>
             <img name="albumImage" src="<%=album.image%>" value="<%=album.image%>" alt="<%=album.name%> album cover">
@@ -45,8 +48,8 @@
         <% } %>
     </div>
     <div class="album-options">
-        <a class="btn back" >back</a>
-        <a class="btn next" >next</a>
+        <a class="btn back">back</a>
+        <a class="btn next">next</a>
     </div>
 </body>
 

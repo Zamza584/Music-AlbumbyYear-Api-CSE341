@@ -11,13 +11,12 @@ body {
   background-image: url("../images/background.jpg");
   background-attachment: fixed;
   background-size: cover;
+  margin-top: 70px;
 }
 body h1 {
   padding: 10px;
   width: fit-content;
   margin: auto;
-  margin-bottom: 40px;
-  border-bottom: #a78787 solid 7px;
   color: #ffffff;
 }
 
@@ -41,6 +40,19 @@ input {
   all: unset;
   border: 1px solid #22678c;
   border-radius: 10px;
+}
+
+.nav_container {
+  height: 50px;
+  background-color: rgba(254, 255, 174, 0.7960784314);
+  margin-bottom: 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.nav_container h1 {
+  color: #22678c;
 }
 
 .reg-container,
@@ -87,14 +99,14 @@ input {
   padding: 20px;
 }
 .album-options label {
-  color: white;
+  color: rgba(251, 255, 0, 0.7254901961);
 }
 .album-options h2 {
   margin-bottom: 20px;
-  color: white;
+  color: rgba(251, 255, 0, 0.7254901961);
 }
 .album-options p {
-  color: white;
+  color: rgba(251, 255, 0, 0.7254901961);
   margin-bottom: 20px;
 }
 
@@ -133,6 +145,7 @@ input {
 }
 .album-container__card h2 {
   font-size: 1rem;
+  color: #22678c;
 }
 .album-container__card img {
   margin-top: 10px;
