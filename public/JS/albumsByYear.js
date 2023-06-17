@@ -61,7 +61,7 @@ for (var i = 0; i < next.length; i++) {
 
 let back = document.querySelectorAll(".back");
 for (var i = 0; i < back.length; i++) {
-  back[i].querySelector(".back").addEventListener("click", async (e) => {
+  back[i].addEventListener("click", async (e) => {
     let year = document.querySelector("#year").value;
     let url = "https://album-by-year-api.onrender.com/" + `albums/${year}/null/previous`;
 
