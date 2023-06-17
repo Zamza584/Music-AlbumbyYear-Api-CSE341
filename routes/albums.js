@@ -90,7 +90,7 @@ router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
       total_tracks: obj.total_tracks
     });
   }
-  res.send(albumList);
+  res.render("albums", { albumList });
 });
 
 //used in index
