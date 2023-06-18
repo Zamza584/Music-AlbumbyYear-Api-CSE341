@@ -13,7 +13,7 @@ const doc = {
   },
   servers: [
     {
-      url: "https://cse-341-project-34h3.onrender.com/",
+      url: "https://album-by-year-api.onrender.com/",
       description: "main server"
     },
     {
