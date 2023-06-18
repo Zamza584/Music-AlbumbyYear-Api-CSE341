@@ -45,7 +45,7 @@ for (var i = 0; i < list.length; i++) {
       items[element.getAttribute("name")] = element.getAttribute("value");
     });
 
-    let url = window.location.href + `/albums/saveAlbum`;
+    let url = window.location.href + `/saveAlbum`;
     fetch(url, {
       method: "POST",
       headers: {

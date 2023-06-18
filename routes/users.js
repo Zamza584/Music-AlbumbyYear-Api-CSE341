@@ -53,7 +53,6 @@ router.post("/login", async (req, res) => {
         httpOnly: true
       });
 
-      
       res.redirect("/albums");
     } else {
       res.send("not allowed");
@@ -73,7 +72,6 @@ router.get("/", async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
-
 
 router.get("/:id", userValidationRules(), async (req, res) => {
   /*#swagger.tags = ['Users']
@@ -112,7 +110,7 @@ router.put("/:id", userValidationRules(), validate, async (req, res) => {
   }
 });
 
-router.delete("/:id",userValidationRules() ,async (req, res) => {
+router.delete("/:id", userValidationRules(), async (req, res) => {
   // #swagger.tags = ['Users']
   // #swagger.summary = "delete a User"
   const { id } = req.params;
