@@ -26,9 +26,57 @@
             "description": "OK"
           }
         }
+      },
+      "post": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/register": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/users/": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "create a User",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "description": "Data needed to create a contact",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/users"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/users"
+              }
+            }
+          }
+        }
+      },
       "get": {
         "tags": [
           "Users"
@@ -44,37 +92,33 @@
             "description": "Bad Request"
           }
         }
-      },
+      }
+    },
+    "/users/login": {
       "post": {
-        "tags": [
-          "Users"
-        ],
-        "summary": "create a User",
         "description": "",
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
           },
-          "201": {
-            "description": "Created"
-          },
-          "422": {
-            "description": "Unprocessable Entity"
+          "400": {
+            "description": "Bad Request"
           }
         },
         "requestBody": {
-          "description": "Data needed to create a contact",
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/users"
-              }
-            },
-            "application/xml": {
-              "schema": {
-                "$ref": "#/components/schemas/users"
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "example": "any"
+                  },
+                  "password": {
+                    "example": "any"
+                  }
+                }
               }
             }
           }
@@ -128,6 +172,9 @@
           },
           "204": {
             "description": "No Content"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
           }
         },
         "requestBody": {
@@ -170,8 +217,8 @@
         }
       }
     },
-    "/albums/": {
-      "get": {
+    "/albums/saveAlbum": {
+      "post": {
         "description": "",
         "parameters": [],
         "responses": {
@@ -179,6 +226,49 @@
             "description": "OK"
           }
         }
+      }
+    },
+    "/albums/{year}/{next?}/{previous?}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "next?",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "previous?",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/albums/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
       }
     }
   },
