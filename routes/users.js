@@ -74,8 +74,8 @@ router.get("/", async (req, res) => {
   }
 });
 
-//get specific user to update info
-router.get("/:id", async (req, res) => {
+
+router.get("/:id", userValidationRules(), async (req, res) => {
   /*#swagger.tags = ['Users']
      #swagger.summary = "search by id"
      #swagger.parameters['id'] = {
@@ -112,7 +112,7 @@ router.put("/:id", userValidationRules(), validate, async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id",userValidationRules() ,async (req, res) => {
   // #swagger.tags = ['Users']
   // #swagger.summary = "delete a User"
   const { id } = req.params;
