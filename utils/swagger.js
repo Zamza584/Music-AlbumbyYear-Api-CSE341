@@ -35,10 +35,19 @@ const doc = {
       password: "anyany"
     },
     updateUsers: {
-      firstName: "any",
-      lastName: "any",
-      email: "any@gmail.com",
+      firstName: "Manuel",
+      lastName: "Zamalloa",
+      email: "zam@gmail.com",
       password: "anyany"
+    },
+    albumData: {
+      albumName: "any",
+      albumArtist: "any",
+      albumRelease: "any",
+      albumLink: "link",
+      albumTTracks: "num",
+      albumImage: "any",
+      user_id: "id number"
     }
   }
 };

@@ -36,6 +36,8 @@ router.post("/", userValidationRules(), validate, async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  /*#swagger.tags = ['Users']
+    #swagger.summary = "Validates and login user" */
   const email = req.body.email;
   const user = await UserSchema.findOne({ email: new RegExp("^" + email + "$", "i") });
   if (user == null) {

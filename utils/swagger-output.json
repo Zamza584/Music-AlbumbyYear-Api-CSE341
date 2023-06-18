@@ -19,6 +19,10 @@
   "paths": {
     "/": {
       "get": {
+        "tags": [
+          "Login"
+        ],
+        "summary": "Renders index.html",
         "description": "",
         "parameters": [],
         "responses": {
@@ -35,6 +39,10 @@
     },
     "/register": {
       "get": {
+        "tags": [
+          "Login"
+        ],
+        "summary": "Sends user to register page",
         "description": "",
         "parameters": [],
         "responses": {
@@ -96,6 +104,10 @@
     },
     "/users/login": {
       "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Validates and login user",
         "description": "",
         "parameters": [],
         "responses": {
@@ -113,10 +125,10 @@
                 "type": "object",
                 "properties": {
                   "email": {
-                    "example": "any"
+                    "example": "mz@gmail.com"
                   },
                   "password": {
-                    "example": "any"
+                    "example": "asdfasdf"
                   }
                 }
               }
@@ -140,7 +152,8 @@
             "schema": {
               "type": "string"
             },
-            "description": "Insert user id here to get data"
+            "description": "Insert user id here to get data",
+            "example": "648df30be33c0d7dbf54d238"
           }
         ],
         "responses": {
@@ -163,7 +176,8 @@
             "schema": {
               "type": "string"
             },
-            "description": "Id of the User"
+            "descripion": "Id of the User",
+            "example": "648df30be33c0d7dbf54d238"
           }
         ],
         "responses": {
@@ -219,37 +233,45 @@
     },
     "/albums/saveAlbum": {
       "post": {
-        "description": "",
+        "tags": [
+          "Albums"
+        ],
+        "summary": "saves album",
+        "description": "Grabs data from an album and then saves that into mongodb. Also the user id is saved into this collection",
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
           }
+        },
+        "requestBody": {
+          "description": "Data needed to save data into db",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/albumData"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/albumData"
+              }
+            }
+          }
         }
       }
     },
-    "/albums/{year}/{next?}/{previous?}": {
+    "/albums/{year}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Albums"
+        ],
+        "summary": "get album list by year",
+        "description": "*Make sure to login in user first to access and try this out",
         "parameters": [
           {
             "name": "year",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "next?",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "previous?",
             "in": "path",
             "required": true,
             "schema": {
@@ -266,6 +288,10 @@
     },
     "/albums/": {
       "get": {
+        "tags": [
+          "Albums"
+        ],
+        "summary": "get album list",
         "description": "",
         "parameters": [],
         "responses": {}
@@ -303,15 +329,15 @@
         "properties": {
           "firstName": {
             "type": "string",
-            "example": "any"
+            "example": "Manuel"
           },
           "lastName": {
             "type": "string",
-            "example": "any"
+            "example": "Zamalloa"
           },
           "email": {
             "type": "string",
-            "example": "any@gmail.com"
+            "example": "zam@gmail.com"
           },
           "password": {
             "type": "string",
@@ -320,6 +346,42 @@
         },
         "xml": {
           "name": "updateUsers"
+        }
+      },
+      "albumData": {
+        "type": "object",
+        "properties": {
+          "albumName": {
+            "type": "string",
+            "example": "any"
+          },
+          "albumArtist": {
+            "type": "string",
+            "example": "any"
+          },
+          "albumRelease": {
+            "type": "string",
+            "example": "any"
+          },
+          "albumLink": {
+            "type": "string",
+            "example": "link"
+          },
+          "albumTTracks": {
+            "type": "string",
+            "example": "num"
+          },
+          "albumImage": {
+            "type": "string",
+            "example": "any"
+          },
+          "user_id": {
+            "type": "string",
+            "example": "id number"
+          }
+        },
+        "xml": {
+          "name": "albumData"
         }
       }
     }

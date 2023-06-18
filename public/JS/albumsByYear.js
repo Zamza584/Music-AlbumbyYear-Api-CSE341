@@ -28,19 +28,10 @@ for (i of back) {
     getAlbums(url);
   });
 }
-// let back = document.querySelectorAll(".back");
-// for (var i = 0; i < back.length; i++) {
-//   back[i].addEventListener("click", async (e) => {
-//     let year = document.querySelector("#year").value;
-//     let url = window.location.href + `/${year}/null/previous`;
-//     getAlbums(url);
-//   });
-// }
 
 let list = document.querySelectorAll(".favorites");
 for (var i = 0; i < list.length; i++) {
   list[i].addEventListener("click", (e) => {
-    console.log(e.target);
     const parentNode = e.target.parentNode;
     const children = Array.from(parentNode.childNodes);
     //used to get array items that have a name in it, specified in the html file.
@@ -54,7 +45,8 @@ for (var i = 0; i < list.length; i++) {
       items[element.getAttribute("name")] = element.getAttribute("value");
     });
 
-    fetch("https://album-by-year-api.onrender.com/albums/saveAlbum", {
+    let url = window.location.href + `/albums/saveAlbum`;
+    fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

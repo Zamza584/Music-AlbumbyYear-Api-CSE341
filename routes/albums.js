@@ -9,24 +9,35 @@ const albumSchema = require("../models/albumSchema");
 let offset = 0;
 
 router.post("/saveAlbum", cookieJWTAuth, async (req, res) => {
+  /*#swagger.tags = ['Albums']
+    #swagger.summary = "saves album"
+    #swagger.description = "Grabs data from an album and then saves that into mongodb. Also the user id is saved into this collection"
+    #swagger.requestBody = {
+       description: "Data needed to save data into db",
+       required: true,
+       schema: { $ref: "#/definitions/albumData" } 
+
+  } */
+
+    
   const token = req.cookies.token;
-  console.log(token)
+  console.log(token);
   const user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-  res.send(user.id); 
+  res.send(user.id);
 
   let albumData = {
     ...req.body,
-    "user_id": user.id,
-  }
+    user_id: user.id
+  };
 
-  let data = albumSchema(albumData)
-  let resp = await data.save()
+  let data = albumSchema(albumData);
+  let resp = await data.save();
   console.log(resp);
-
 });
 
-
 router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
+  /*#swagger.tags = ['Albums']
+    #swagger.summary = "get album list by year" */
   let selectedYear = req.params.year;
   let p = req.params;
 
@@ -74,7 +85,7 @@ router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
       Authorization: "Bearer " + token
     }
   });
-  
+
   let albums = await albumsData.json();
   let albumList = [];
 
@@ -96,6 +107,8 @@ router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
 //used in index
 
 router.get("/", cookieJWTAuth, async (req, res) => {
+  /*#swagger.tags = ['Albums']
+    #swagger.summary = "get album list" */
   var clientId = process.env.CLIENT_ID; // Your client id
   var clientSecret = process.env.CLIENT_SECRET; // Your secret
   const tokenEndpoint = "https://accounts.spotify.com/api/token";
@@ -145,7 +158,6 @@ router.get("/", cookieJWTAuth, async (req, res) => {
   }
   res.render("albums", { albumList });
 });
-
 
 // function authenticateToken(req, res, next) {
 //   const authHeader = req.cookies.token;
