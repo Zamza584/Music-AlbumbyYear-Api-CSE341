@@ -3,9 +3,10 @@ const UserSchema = require("../models/userSchema");
 const { userValidationRules, validate } = require("../utils/validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { cookieJWTAuth } = require("../public/middlewares/cookieJWTAuth");
 
 router.post("/", userValidationRules(), validate, async (req, res) => {
-  //used to create a new user
+  //used to register a new user
 
   /*#swagger.tags = ['Users']
       #swagger.summary = "create a User"
@@ -31,7 +32,7 @@ router.post("/", userValidationRules(), validate, async (req, res) => {
     // res.redirect("/");
     // res.status(201).json(data);
   } catch (err) {
-    res.status(500).json({ message: err });
+    res.render("registration", { message: "error please try again" });
   }
 });
 
@@ -73,7 +74,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", userValidationRules(), async (req, res) => {
+router.get("/:id", cookieJWTAuth, async (req, res) => {
   /*#swagger.tags = ['Users']
      #swagger.summary = "search by id"
      #swagger.parameters['id'] = {
@@ -86,7 +87,7 @@ router.get("/:id", userValidationRules(), async (req, res) => {
   res.send("Welcome User " + response.firstName);
 });
 
-router.put("/:id", userValidationRules(), validate, async (req, res) => {
+router.put("/:id", cookieJWTAuth, validate, async (req, res) => {
   /* #swagger.tags = ['Users']
      #swagger.summary = "Update a User"
      #swagger.parameters['id'] = {
@@ -106,11 +107,11 @@ router.put("/:id", userValidationRules(), validate, async (req, res) => {
     const data = await UserSchema.updateOne({ _id: id }, { $set: body });
     res.send("user has been updated!");
   } catch (err) {
-    res.status(204).json({ message: err });
+    res.status(400).json({ message: err });
   }
 });
 
-router.delete("/:id", userValidationRules(), async (req, res) => {
+router.delete("/:id", cookieJWTAuth, async (req, res) => {
   // #swagger.tags = ['Users']
   // #swagger.summary = "delete a User"
   const { id } = req.params;

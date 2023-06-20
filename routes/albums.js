@@ -3,9 +3,6 @@ const { cookieJWTAuth } = require("../public/middlewares/cookieJWTAuth");
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const albumSchema = require("../models/albumSchema");
-/* get album names by title, id, release data and artist 
-   I am using deezer api to do so
-*/
 let offset = 0;
 
 router.post("/saveAlbum", cookieJWTAuth, async (req, res) => {
@@ -104,8 +101,7 @@ router.get("/:year/:next?/:previous?", cookieJWTAuth, async (req, res) => {
   res.send(albumList);
 });
 
-//used in index
-
+//used in index and the starting route to get all the albums
 router.get("/", cookieJWTAuth, async (req, res) => {
   /*#swagger.tags = ['Albums']
     #swagger.summary = "get album list" */
@@ -158,17 +154,5 @@ router.get("/", cookieJWTAuth, async (req, res) => {
   }
   res.render("albums", { albumList });
 });
-
-// function authenticateToken(req, res, next) {
-//   const authHeader = req.cookies.token;
-//   const token = authHeader && authHeader.split(" ")[1];
-//   if (token == null) return res.sendStatus(401);
-
-//   jwt.verify(token, proces.env.ACCESS_TOKEN_SECRET, (err, user) => {
-//     if (err) return res.sendStatus(403);
-//     req.user = user;
-//     next();
-//   });
-// }
 
 module.exports = router;

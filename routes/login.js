@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
 router.get("/register", (req, res) => {
   /*#swagger.tags = ['Login']
     #swagger.summary = "Sends user to register page" */
-  res.sendFile("registration.html", { root: "./public" });
+  res.render("registration");
 });
 
 module.exports = router;

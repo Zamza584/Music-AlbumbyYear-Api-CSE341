@@ -17,6 +17,10 @@
     </nav>
     <div class="reg-container">
         <h2>Registration</h2>
+        <% try {%>
+        <p><%= extractedErrors[0].email  %></p>
+        <p><%= extractedErrors[1].password  %></p>
+        <% } catch (e) { }%>
         <form action="./users" method="post">
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="firstName">

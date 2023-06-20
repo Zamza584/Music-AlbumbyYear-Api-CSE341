@@ -18,7 +18,7 @@ const port = process.env.PORT || 8000;
 
 app.use(cookieParser());
 app.use(express.static(__dirname + "/public"));
-app.use(express.json({ extended: false }));
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({ origin: "*", credentials: true }));
 

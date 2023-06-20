@@ -32,6 +32,7 @@ for (i of back) {
 let list = document.querySelectorAll(".favorites");
 for (var i = 0; i < list.length; i++) {
   list[i].addEventListener("click", (e) => {
+    console.log("working here")
     const parentNode = e.target.parentNode;
     const children = Array.from(parentNode.childNodes);
     //used to get array items that have a name in it, specified in the html file.
@@ -40,6 +41,7 @@ for (var i = 0; i < list.length; i++) {
     );
 
     let items = {};
+    console.log(items)
 
     elements.forEach((element) => {
       items[element.getAttribute("name")] = element.getAttribute("value");
