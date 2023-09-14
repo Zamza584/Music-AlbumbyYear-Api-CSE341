@@ -16,11 +16,12 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const port = process.env.PORT || 8000;
 
-app.use(cookieParser());
-app.use(express.static(__dirname + "/public"));
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors({ origin: "*", credentials: true }));
+app
+  .use(cookieParser())
+  .use(express.static(__dirname + "/public"))
+  .use(express.json())
+  .use(bodyParser.urlencoded({ extended: true }))
+  .use(cors({ origin: "*", credentials: true }));
 
 app.use("/", require("./routes/login"));
 app.use("/users", require("./routes/users"));
@@ -32,7 +33,3 @@ app.listen(port, console.log("connected to server http://localhost:" + port));
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
-
-//initial routes ...
-
-//project is going to be about music and getting albums from a specific year. I will use spotify api to hopefully do this.

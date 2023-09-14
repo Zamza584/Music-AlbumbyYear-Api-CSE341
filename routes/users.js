@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const UserSchema = require("../models/userSchema");
-const { userValidationRules, validate } = require("../utils/validator");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const { userValidationRules, validate } = require("../utils/validator");
 const { cookieJWTAuth } = require("../public/middlewares/cookieJWTAuth");
+const jwt = require("jsonwebtoken");
 
 router.post("/", userValidationRules(), validate, async (req, res) => {
   //used to register a new user
