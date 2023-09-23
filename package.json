@@ -4,6 +4,9 @@
   "author": "",
   "license": "ISC",
   "description": "",
+  "engines": {
+    "node": "14.0.0"
+  },
   "private": true,
   "scripts": {
     "start": "node server.js",
@@ -14,9 +17,7 @@
     "swagger": "node ./utils/swagger.js",
     "sass": "sass -w public/scss/:public/css/"
   },
-  "engines": {
-    "node": ">=14.0.0"
-  },
+  
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
