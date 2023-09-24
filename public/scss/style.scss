@@ -14,8 +14,11 @@ body {
   h1 {
     padding: 10px;
     width: fit-content;
-    margin: auto;
     color: color(white, base);
+    a { 
+      text-decoration: none;
+      color: color(blue, base);
+    }
   }
   background-image: url("../images/background.jpg");
   background-attachment: fixed;
@@ -46,16 +49,25 @@ input {
 }
 
 .nav_container {
-  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 70px;
   background-color: color(yellow, light);
-  h1 {
-    color: color(blue, base);
-  }
   margin-bottom: 30px;
   position: fixed; 
   top: 0; 
   width: 100%; 
   overflow: hidden;
+  h1 {
+    color: color(blue, base);
+  }
+  .login { 
+    margin-right: 2rem;
+    color: color(blue, base);
+    z-index: 3000;
+    text-decoration: none;
+  }
 }
 
 .reg-container,
@@ -63,7 +75,7 @@ input {
   background-color: color(white, base);
   max-width: 500px;
   padding: 25px 40px;
-  margin: 0 2rem;
+  margin: 7rem 2rem;
   border-radius: 20px;
   box-shadow: 15px 15px color(blue, base);
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>Login Page</title>
     <link rel="shortcut icon" href="#">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -14,22 +14,19 @@
     <nav class="nav_container">
         <h1><a href="/">Music Album Api</a></h1>
     </nav>
-    <div class="reg-container">
-        <h2>Registration</h2>
+    <div class="login-container">
+        <h2>Log In</h2>
         <% try {%>
-        <p><%= extractedErrors[0].email  %></p>
-        <p><%= extractedErrors[1].password  %></p>
-        <% } catch (e) { }%>
-        <form action="./users" method="post">
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName">
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName">
+        <p><%= message %></p>
+        <% } catch (e) { 
+        }%>
+        <form action="/login" method="post">
             <label for="email">Email</label>
             <input type="email" id="email" name="email">
             <label for="password">Password</label>
             <input type="password" id="password" name="password">
-            <button type="submit" class="btn">Create New Account</button>
+            <button class="btn" type="submit">Log In</button>
+            <p>Don't have an account?<a href="/register"> Sign up</a></p>
         </form>
     </div>
 </body>

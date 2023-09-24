@@ -21,15 +21,12 @@ app
   .use(express.static(__dirname + "/public"))
   .use(express.json())
   .use(bodyParser.urlencoded({ extended: true }))
-  .use(cors({ origin: "*", credentials: true }));
-
-app.use("/", require("./routes/login"));
-app.use("/users", require("./routes/users"));
-app.use("/albums", require("./routes/albums"));
+  .use(cors({ origin: "*", credentials: true }))
+  .use("/", require("./routes/index"))
+  .use("/users", require("./routes/users"))
+  .use("/albums", require("./routes/albums"))
+  .use("/login", require("./routes/login"))
+  .use("/register", require("./routes/register"));
 
 connectMongoDb();
 app.listen(port, console.log("connected to server http://localhost:" + port));
-
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
-});

@@ -7,7 +7,7 @@ let year;
 document.querySelector("#year").addEventListener("change", async (e) => {
   year = e.target.value;
 
-  let url = window.location.href + `/${year}`;
+  let url = window.location.href + `albums/${year}`;
   getAlbums(url);
 });
 
@@ -15,7 +15,7 @@ let next = document.querySelectorAll(".next");
 for (var i = 0; i < next.length; i++) {
   next[i].addEventListener("click", async (e) => {
     let year = document.querySelector("#year").value;
-    let url = window.location.href + `/${year}/next`;
+    let url = window.location.href + `albums/${year}/next`;
     getAlbums(url);
   });
 }
@@ -24,7 +24,7 @@ let back = document.querySelectorAll(".back");
 for (i of back) { 
   i.addEventListener("click", async (e) => {
     let year = document.querySelector("#year").value;
-    let url = window.location.href + `/${year}/null/previous`;
+    let url = window.location.href + `albums/${year}/null/previous`;
     getAlbums(url);
   });
 }
@@ -47,7 +47,7 @@ for (var i = 0; i < list.length; i++) {
       items[element.getAttribute("name")] = element.getAttribute("value");
     });
 
-    let url = window.location.href + `/saveAlbum`;
+    let url = window.location.href + `albums/saveAlbum`;
     fetch(url, {
       method: "POST",
       headers: {

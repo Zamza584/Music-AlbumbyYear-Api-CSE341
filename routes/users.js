@@ -6,8 +6,6 @@ const { cookieJWTAuth } = require("../public/middlewares/cookieJWTAuth");
 const jwt = require("jsonwebtoken");
 
 router.post("/", userValidationRules(), validate, async (req, res) => {
-  //used to register a new user
-
   /*#swagger.tags = ['Users']
       #swagger.summary = "create a User"
       #swagger.requestBody = {
@@ -28,38 +26,9 @@ router.post("/", userValidationRules(), validate, async (req, res) => {
     });
 
     const data = await users.save();
-    res.render("index", { message: "Congrats your account has been created" });
-    // res.redirect("/");
-    // res.status(201).json(data);
+    res.render("login", { message: "Congrats your account has been created" });
   } catch (err) {
     res.render("registration", { message: "error please try again" });
-  }
-});
-
-router.post("/login", async (req, res) => {
-  /*#swagger.tags = ['Users']
-    #swagger.summary = "Validates and login user" */
-  const email = req.body.email;
-  const user = await UserSchema.findOne({ email: new RegExp("^" + email + "$", "i") });
-  if (user == null) {
-    res.status(400).send("no user found");
-  }
-
-  const newUser = { id: user.id, email: user.email };
-  const accessToken = jwt.sign(newUser, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1h" });
-
-  try {
-    if (await bcrypt.compare(req.body.password, user.password)) {
-      res.cookie("token", accessToken, {
-        httpOnly: true
-      });
-
-      res.redirect("/albums");
-    } else {
-      res.send("not allowed");
-    }
-  } catch (err) {
-    res.send({ message: err });
   }
 });
 
